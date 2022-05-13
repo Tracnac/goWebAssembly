@@ -11,8 +11,8 @@ func Wasm() js.Func {
 		if len(args) != 1 {
 			return "!Number"
 		}
-		n1, _ := strconv.ParseFloat(args[0].String(), 32)
-		return 42 * n1
+		n, _ := strconv.Atoi(args[0].String())
+		return 42 * n
 	})
 	return wasm
 }
