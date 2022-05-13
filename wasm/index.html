@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="wasm.js"></script>
+    <!-- <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("module.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+    </script> -->
+    <script>
+    const go = new Go();
+    let mod, inst;
+    WebAssembly.instantiateStreaming(fetch("module.wasm"), go.importObject).then((result) => {
+        mod = result.module;
+        inst = result.instance;
+        go.run(inst);
+        // inst = WebAssembly.instantiate(mod, go.importObject); // reset instance
+        }).catch((err) => {
+            console.error(err);
+        });
+    </script>
+<link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+    <title>Hello, Wasm!</title>
+  </head>
+  <body>
+    <main class="container">
+        <div>
+            <input class="text" value="" id="input"></text>
+            <input class="text" value="" id="output"></text>
+            <button type="submit" onclick="exec(document.getElementById('input').value)">Send</button>
+        </div>
+    </main>
+<script>
+    function exec(params) {
+        document.getElementById('output').value = Wasm(params)
+    }
+</script>
+</body>
+</html>
