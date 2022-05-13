@@ -24,7 +24,7 @@
     </script>
 <link
       rel="stylesheet"
-      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+      href="pico.min.css"
     />
     <title>Hello, Wasm!</title>
   </head>
@@ -33,12 +33,15 @@
         <div>
             <input class="text" value="" id="input"></text>
             <input class="text" value="" id="output"></text>
-            <button type="submit" onclick="exec(document.getElementById('input').value)">Send</button>
+            <div>
+            <button id="submit">Full WebAssembly</button>
+            <button type="submit" onclick="exec(document.getElementById('input').value)">JS WebAssembly</button>
+            </div>
         </div>
     </main>
 <script>
     function exec(params) {
-        document.getElementById('output').value = Wasm(params)
+        document.getElementById('output').value = WasmJS(params)
     }
 </script>
 </body>
