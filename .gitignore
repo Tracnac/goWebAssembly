@@ -21,3 +21,4 @@
 go.work
 wasm/module.wasm
 sandbox
+oryxBuildBinary
