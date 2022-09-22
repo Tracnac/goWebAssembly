@@ -7,8 +7,8 @@ init:
 		go get -u
 		go mod tidy
 		cp `go env GOROOT`/misc/wasm/wasm_exec.js ${WASM_DIR}/wasm_exec.js
-		curl https://github.com/picocss/pico/blob/master/css/pico.min.css -o wasm/pico.min.css
-		curl https://github.com/picocss/pico/blob/master/css/pico.min.css.map -o wasm/pico.min.css.map
+		curl https://raw.githubusercontent.com/picocss/pico/master/css/pico.min.css -o wasm/pico.min.css
+		curl https://raw.githubusercontent.com/picocss/pico/master/css/pico.min.css.map -o wasm/pico.min.css.map
 build:
 		GOOS="js" GOARCH="wasm" go build -o ${WASM_DIR}/module.wasm ${WASM_DIR}/wasm.go
 		go build -o ${BINARY_NAME} ${BINARY_NAME}.go
